@@ -85,6 +85,7 @@
 				F6DA6EC123E8932700C5150E /* FoodieTests */,
 				F6DA6ECC23E8932700C5150E /* FoodieUITests */,
 				F6DA6EA623E8932700C5150E /* Products */,
+				F6DA6EDB23E8B86300C5150E /* Assets */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,14 +102,12 @@
 		F6DA6EA723E8932700C5150E /* Foodie */ = {
 			isa = PBXGroup;
 			children = (
-				F6DA6EA823E8932700C5150E /* AppDelegate.swift */,
-				F6DA6EAA23E8932700C5150E /* SceneDelegate.swift */,
 				F6DA6EAC23E8932700C5150E /* ViewController.swift */,
 				F6DA6EAE23E8932700C5150E /* Main.storyboard */,
-				F6DA6EB423E8932700C5150E /* Assets.xcassets */,
-				F6DA6EB623E8932700C5150E /* LaunchScreen.storyboard */,
-				F6DA6EB923E8932700C5150E /* Info.plist */,
-				F6DA6EB123E8932700C5150E /* Foodie.xcdatamodeld */,
+				F6DA6EE023E8B90500C5150E /* Models */,
+				F6DA6EDD23E8B8EE00C5150E /* Views */,
+				F6DA6EDE23E8B8F000C5150E /* Controllers */,
+				F6DA6EDC23E8B8BB00C5150E /* CoreData */,
 			);
 			path = Foodie;
 			sourceTree = "<group>";
@@ -129,6 +128,56 @@
 				F6DA6ECF23E8932700C5150E /* Info.plist */,
 			);
 			path = FoodieUITests;
+			sourceTree = "<group>";
+		};
+		F6DA6EDB23E8B86300C5150E /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				F6DA6EB923E8932700C5150E /* Info.plist */,
+				F6DA6EA823E8932700C5150E /* AppDelegate.swift */,
+				F6DA6EAA23E8932700C5150E /* SceneDelegate.swift */,
+				F6DA6EB423E8932700C5150E /* Assets.xcassets */,
+				F6DA6EB623E8932700C5150E /* LaunchScreen.storyboard */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		F6DA6EDC23E8B8BB00C5150E /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				F6DA6EB123E8932700C5150E /* Foodie.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		F6DA6EDD23E8B8EE00C5150E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			path = CoreData/Views;
+			sourceTree = "<group>";
+		};
+		F6DA6EDE23E8B8F000C5150E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F6DA6EDF23E8B8F200C5150E /* New Group */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F6DA6EDF23E8B8F200C5150E /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		F6DA6EE023E8B90500C5150E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

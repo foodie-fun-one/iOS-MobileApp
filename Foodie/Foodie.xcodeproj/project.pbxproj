@@ -16,6 +16,7 @@
 		F6DA6EB823E8932700C5150E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6DA6EB623E8932700C5150E /* LaunchScreen.storyboard */; };
 		F6DA6EC323E8932700C5150E /* FoodieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DA6EC223E8932700C5150E /* FoodieTests.swift */; };
 		F6DA6ECE23E8932700C5150E /* FoodieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DA6ECD23E8932700C5150E /* FoodieUITests.swift */; };
+		F6DA6EE223E8BEB900C5150E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DA6EE123E8BEB900C5150E /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		F6DA6EC923E8932700C5150E /* FoodieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6DA6ECD23E8932700C5150E /* FoodieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodieUITests.swift; sourceTree = "<group>"; };
 		F6DA6ECF23E8932700C5150E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6DA6EE123E8BEB900C5150E /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +109,6 @@
 				F6DA6EE023E8B90500C5150E /* Models */,
 				F6DA6EDD23E8B8EE00C5150E /* Views */,
 				F6DA6EDE23E8B8F000C5150E /* Controllers */,
-				F6DA6EDC23E8B8BB00C5150E /* CoreData */,
 			);
 			path = Foodie;
 			sourceTree = "<group>";
@@ -145,6 +146,7 @@
 		F6DA6EDC23E8B8BB00C5150E /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				F6DA6EE123E8BEB900C5150E /* CoreDataStack.swift */,
 				F6DA6EB123E8932700C5150E /* Foodie.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -176,6 +178,7 @@
 		F6DA6EE023E8B90500C5150E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F6DA6EDC23E8B8BB00C5150E /* CoreData */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6DA6EE223E8BEB900C5150E /* CoreDataStack.swift in Sources */,
 				F6DA6EAD23E8932700C5150E /* ViewController.swift in Sources */,
 				F6DA6EB323E8932700C5150E /* Foodie.xcdatamodeld in Sources */,
 				F6DA6EA923E8932700C5150E /* AppDelegate.swift in Sources */,
@@ -489,7 +493,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8492LT54LT;
-				INFOPLIST_FILE = Foodie/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Assets/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -507,7 +511,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8492LT54LT;
-				INFOPLIST_FILE = Foodie/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Assets/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

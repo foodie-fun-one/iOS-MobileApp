@@ -39,6 +39,22 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButton(_ sender: Any) {
+        guard let username = usernameTextField.text else {return}
+        guard let password = passwordTextField.text else {return}
+        guard let email = emailTextField.text else {return}
+        guard let city = cityTextField.text else {return}
+        
+        let newUser = Foodie1(username: username, password: password, email: email, city: city)
+        
+        networkController.signIn(with: newUser) { (error) in
+            if let error = error {
+                NSLog("Error loging in \(error)")
+            } else {
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
     }
     
     /*

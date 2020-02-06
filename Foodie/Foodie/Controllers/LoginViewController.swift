@@ -10,10 +10,13 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet weak var uernameTextField: UITextField!
+    let networkController = NetworkController()
+    @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var cityTextField: UITextField!
+   
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +24,18 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func signUPButton(_ sender: Any) {
+        guard let username = usernameTextField.text else {return}
+        guard let password = passwordTextField.text else {return}
+        guard let email = emailTextField.text else {return}
+        guard let city = cityTextField.text else {return}
+        
+        let newUser = Foodie1(username: username, password: password, email: email, city: city)
+        
+        networkController.signUp(with: newUser) { (error) in
+            if let error = error {
+                NSLog("Error signing up \(error)")
+            }
+        }
     }
     
     @IBAction func loginButton(_ sender: Any) {

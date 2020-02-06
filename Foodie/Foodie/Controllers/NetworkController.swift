@@ -24,7 +24,7 @@ enum NetworkError: Error {
 
 class NetworkController {
     
-    private let baseURL = URL(string: "foodiefun-buildweek.herokuapp.com/api")!
+    private let baseURL = URL(string: "https://foodiefun-buildweek.herokuapp.com")!
     var bearer: Bearer?
     
     
@@ -48,7 +48,7 @@ class NetworkController {
         
         URLSession.shared.dataTask(with: request) { (_, response, error) in
             if let response = response as? HTTPURLResponse,
-                response.statusCode != 200 {
+                response.statusCode != 201 {
                 completion(NSError(domain: "", code: response.statusCode, userInfo:nil))
                 return
             }

@@ -14,6 +14,7 @@
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="location" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="type" optional="YES" attributeType="String"/>
         <relationship name="foodies" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Foodie" inverseName="restaurants" inverseEntity="Foodie"/>
         <relationship name="review" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Review" inverseName="restaurant" inverseEntity="Review"/>
@@ -25,8 +26,8 @@
         <relationship name="restaurant" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Restaurant" inverseName="review" inverseEntity="Restaurant"/>
     </entity>
     <elements>
-        <element name="Foodie" positionX="-155.2578125" positionY="-77.10546875" width="128" height="148"/>
-        <element name="Restaurant" positionX="427.62890625" positionY="-24.2109375" width="185.03125" height="148"/>
-        <element name="Review" positionX="144.3359375" positionY="335.12890625" width="128" height="103"/>
+        <element name="Foodie" positionX="-519.75390625" positionY="-201.59375" width="156.4609375" height="148"/>
+        <element name="Restaurant" positionX="57.5546875" positionY="-216.2265625" width="185.03125" height="163"/>
+        <element name="Review" positionX="-202.7109375" positionY="120.84375" width="128" height="103"/>
     </elements>
 </model>

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F699D1D823EC726800569FEE /* Foodie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F699D1D723EC726800569FEE /* Foodie.swift */; };
+		F699D1DA23EC731300569FEE /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = F699D1D923EC731300569FEE /* Review.swift */; };
+		F699D1DC23EC753D00569FEE /* Bearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F699D1DB23EC753D00569FEE /* Bearer.swift */; };
+		F699D1DE23EC75CE00569FEE /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F699D1DD23EC75CE00569FEE /* NetworkController.swift */; };
+		F699D1E023EC791900569FEE /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F699D1DF23EC791900569FEE /* Restaurant.swift */; };
+		F699D1E223EC815400569FEE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F699D1E123EC815400569FEE /* LoginViewController.swift */; };
 		F6DA6EA923E8932700C5150E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DA6EA823E8932700C5150E /* AppDelegate.swift */; };
 		F6DA6EAB23E8932700C5150E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DA6EAA23E8932700C5150E /* SceneDelegate.swift */; };
 		F6DA6EAD23E8932700C5150E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DA6EAC23E8932700C5150E /* ViewController.swift */; };
@@ -37,6 +43,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F699D1D723EC726800569FEE /* Foodie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foodie.swift; sourceTree = "<group>"; };
+		F699D1D923EC731300569FEE /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		F699D1DB23EC753D00569FEE /* Bearer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bearer.swift; sourceTree = "<group>"; };
+		F699D1DD23EC75CE00569FEE /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		F699D1DF23EC791900569FEE /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		F699D1E123EC815400569FEE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F6DA6EA523E8932700C5150E /* Foodie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6DA6EA823E8932700C5150E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6DA6EAA23E8932700C5150E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -163,22 +175,20 @@
 		F6DA6EDE23E8B8F000C5150E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F6DA6EDF23E8B8F200C5150E /* New Group */,
+				F699D1DD23EC75CE00569FEE /* NetworkController.swift */,
+				F699D1E123EC815400569FEE /* LoginViewController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		F6DA6EDF23E8B8F200C5150E /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		F6DA6EE023E8B90500C5150E /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				F6DA6EDC23E8B8BB00C5150E /* CoreData */,
+				F699D1D723EC726800569FEE /* Foodie.swift */,
+				F699D1D923EC731300569FEE /* Review.swift */,
+				F699D1DB23EC753D00569FEE /* Bearer.swift */,
+				F699D1DF23EC791900569FEE /* Restaurant.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -314,11 +324,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F699D1E023EC791900569FEE /* Restaurant.swift in Sources */,
+				F699D1DC23EC753D00569FEE /* Bearer.swift in Sources */,
 				F6DA6EE223E8BEB900C5150E /* CoreDataStack.swift in Sources */,
+				F699D1D823EC726800569FEE /* Foodie.swift in Sources */,
+				F699D1DA23EC731300569FEE /* Review.swift in Sources */,
 				F6DA6EAD23E8932700C5150E /* ViewController.swift in Sources */,
 				F6DA6EB323E8932700C5150E /* Foodie.xcdatamodeld in Sources */,
 				F6DA6EA923E8932700C5150E /* AppDelegate.swift in Sources */,
 				F6DA6EAB23E8932700C5150E /* SceneDelegate.swift in Sources */,
+				F699D1DE23EC75CE00569FEE /* NetworkController.swift in Sources */,
+				F699D1E223EC815400569FEE /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

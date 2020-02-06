@@ -7,3 +7,12 @@
 //
 
 import Foundation
+
+struct Restaurant1: Codable {
+    
+    let id: Int?
+    let name: String
+    var address: String
+    var hours: String
+    var reviews: [Review1]?
+}

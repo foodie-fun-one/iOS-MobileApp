@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+class Review1: Codable {
+    
+    let id: String
+    let menuItem: String
+    let cuisineType: String
+    var price: Int
+    var review: String
+    var rating: Int
+}

@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+class Foodie1: Codable {
+    
+    let id: String?
+    let username: String
+    let password: String
+    let email: String
+    let city: String
+    var reviews: [Review1]?
+}

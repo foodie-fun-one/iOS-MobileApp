@@ -10,5 +10,6 @@ import Foundation
 
 class RestaurantController {
     var currentRestaurant: Restaurant1?
+    var currentRestaurantDetails: Restaurant1?
     var restaurants: [Restaurant1] = []
 }

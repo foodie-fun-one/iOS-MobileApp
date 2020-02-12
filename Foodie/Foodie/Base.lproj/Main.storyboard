@@ -74,6 +74,7 @@
                         <segue destination="DDk-JC-C7n" kind="popoverPresentation" identifier="LoginSegue" popoverAnchorView="8bC-Xf-vdC" id="C6a-AT-mvp">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
+                        <segue destination="pQG-He-7Hr" kind="show" identifier="ToRestaurantTableViewSegue" id="Dfn-LB-uEy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -413,6 +414,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pQG-He-7Hr" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Restaurants" id="yBv-bO-Jho"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="dEb-e5-eUm"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7xB-wT-x1J">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -590,4 +592,7 @@
             <point key="canvasLocation" x="686" y="1144"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Dfn-LB-uEy"/>
+    </inferredMetricsTieBreakers>
 </document>

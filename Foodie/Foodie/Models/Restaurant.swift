@@ -11,8 +11,8 @@ import Foundation
 class Restaurant1: Codable {
     
     var id: Int?
-    let name: String
-    var address: String
+    let name: String?
+    var address: String?
     var hours: String?
     var reviewsDisc: String?
     var priceRating: Int?

@@ -11,8 +11,10 @@ import UIKit
 class ReviewRestaurantViewController: UIViewController {
     
     //Properties
-    var networkController = NetworkController()
+    let networkController = NetworkController()
+    let restaurantController = RestaurantController()
     var currentRestaurant: Restaurant1?
+    
     @IBOutlet weak var priceRatingSC: UISegmentedControl!
     @IBOutlet weak var foodRatingSC: UISegmentedControl!
     @IBOutlet weak var serviceRatingSC: UISegmentedControl!

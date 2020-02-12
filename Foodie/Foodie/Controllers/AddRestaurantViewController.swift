@@ -42,6 +42,7 @@ class AddRestaurantViewController: UIViewController {
                     self.nameTextField.text = ""
                     self.cityTextField.text = ""
                     self.hoursTextField.text = ""
+                    self.performSegue(withIdentifier: "ToRestaurantTableViewSegue", sender: Any?.self)
                 }
             }
         }

@@ -33,9 +33,10 @@ class LoginViewController: UIViewController {
         
         networkController.signUp(with: newUser) { (error) in
             if let error = error {
-                NSLog("Error signing up \(error)")
+                NSLog("Error during signup: \(error)")
             }
         }
+        
     }
     
     @IBAction func loginButton(_ sender: Any) {

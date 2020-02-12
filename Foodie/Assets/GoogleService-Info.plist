@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>614280573640-t8hiftpu2h20k4vpmgedqa96n42o46f7.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.614280573640-t8hiftpu2h20k4vpmgedqa96n42o46f7</string>
+	<key>API_KEY</key>
+	<string>AIzaSyA5QG7RaQGlJxft0cIrAUilaGTs_Po8XKs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>614280573640</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.nathanhedgeman.Foodie</string>
+	<key>PROJECT_ID</key>
+	<string>fooder-7ad09</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fooder-7ad09.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:614280573640:ios:5f9310de536e8142f9abfd</string>
+	<key>DATABASE_URL</key>
+	<string>https://fooder-7ad09.firebaseio.com</string>
+</dict>
+</plist>

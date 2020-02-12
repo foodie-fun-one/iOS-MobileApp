@@ -10,7 +10,7 @@ import Foundation
 
 class Foodie1: Codable {
     
-    var id: String?
+    var id: Int?
     let username: String
     let password: String
     let email: String?
@@ -23,4 +23,8 @@ class Foodie1: Codable {
         self.email = email
         self.city = city
     }
+}
+
+class CurrentUserID: Codable {
+    let userID: Int
 }

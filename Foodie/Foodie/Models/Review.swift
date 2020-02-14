@@ -8,12 +8,13 @@
 
 import Foundation
 
-class Review1: Codable {
+struct Review1: Codable {
     
-    let id: String
-    let menuItem: String
-    let cuisineType: String
-    var price: Int
-    var review: String
-    var rating: Int
+    var id: Int?
+    var userId: Int?
+    var restaurantId: Int?
+    var reviewDisc: String?
+    var priceRating: Int?
+    var serviceRating: Int?
+    var foodRating: Int?
 }

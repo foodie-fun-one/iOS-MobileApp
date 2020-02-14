@@ -14,10 +14,7 @@ class Restaurant1: Codable {
     let name: String?
     var address: String?
     var hours: String?
-    var reviewsDisc: String?
-    var priceRating: Int?
-    var serviceRating: Int?
-    var foodRating: Int?
+    var reviews: [Review1]?
     
     init(name: String, address: String, hours: String?) {
         self.name = name

@@ -31,7 +31,7 @@ class NetworkController {
     private let baseURL = URL(string: "https://foodiefun-buildweek.herokuapp.com")!
     
     //var bearer: Bearer?
-    var bearer =  Bearer(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik5hdGU0IiwicGFzc3dvcmQiOiIkMmEkMTIkaGMxa29Ma0ZoYTZjN2xhYVNUazFMT2RmRUl5LjdHZk9ndjlNckVvckdZdml0ZnpoR0NQWFMiLCJpYXQiOjE1ODE1NDI4NjAsImV4cCI6MTU4MTU3MTY2MH0.2ynQN6RUc5PRVDbiiab8yIYSyhPRBS7zsF4wEEGRFUU")
+    var bearer =  Bearer(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik5hdGU0IiwicGFzc3dvcmQiOiIkMmEkMTIkaGMxa29Ma0ZoYTZjN2xhYVNUazFMT2RmRUl5LjdHZk9ndjlNckVvckdZdml0ZnpoR0NQWFMiLCJpYXQiOjE1ODE2NTA3MDAsImV4cCI6MTU4MTY3OTUwMH0.xuPP6kXiv9N2XEyXSS8azRzE5FboJD_yp-8ArRXry4U")
     
     var currentUserID: CurrentUserID?
     var currentUser: Foodie1?
@@ -202,10 +202,10 @@ class NetworkController {
             }.resume()
     }
     
-    func updateRestaurant(restaurant: Restaurant1, completion: @escaping (NetworkError?) -> Void) {
+    func updateRestaurantReview(review: Review1, completion: @escaping (NetworkError?) -> Void) {
         
-        guard let restaurantID = restaurant.id else {return}
-        let url = baseURL.appendingPathComponent("api/restaurants/\(restaurantID)")
+        let restaurantID = review.restaurantId
+        let url = baseURL.appendingPathComponent("api/reviews/restaurant/\(restaurantID)")
         //guard let bearer = bearer else {return}
 
         var request = URLRequest(url: url)
@@ -218,7 +218,7 @@ class NetworkController {
         encoder.keyEncodingStrategy = .convertToSnakeCase
 
         do {
-            request.httpBody = try encoder.encode(restaurant)
+            request.httpBody = try encoder.encode(review)
         } catch {
             NSLog("Error encoding the restaurant update: \(error)")
             completion(.otherError)
@@ -277,6 +277,56 @@ class NetworkController {
             
             do {
                 restaurantController.currentRestaurantDetails = try decoder.decode(Restaurant1.self, from: data)
+                completion(nil)
+            } catch {
+                print("Error decoding current restaurant: \(error)")
+                completion(.noDecode)
+                return
+            }
+            }.resume()
+    }
+    
+    func fetchCurrentRestaurantReviews(currentRestaurant: Restaurant1, completion: @escaping (NetworkError?) -> Void) {
+        
+        //guard let bearer = bearer else {return}
+        guard let id = currentRestaurant.id else {return print("No id")}
+
+        let restaurantURL = baseURL.appendingPathComponent("api/reviews/restaurant/\(id)")
+        print(restaurantURL.absoluteString)
+
+        var request = URLRequest(url: restaurantURL)
+        request.httpMethod = HTTPMethod.get.rawValue
+        request.addValue("\(bearer.token)", forHTTPHeaderField: "Authorization")
+
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let response = response as? HTTPURLResponse,
+                response.statusCode != 200 {
+                print(response.statusCode)
+                completion(.otherError)
+                return
+            }
+
+            if let _ = error {
+                completion(.otherError)
+                return
+            }
+
+            guard let data = data else {
+                completion(.badData)
+                return
+            }
+            
+            print(data)
+
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            
+            do {
+                restaurantController.currentRestaurant?.reviews = try decoder.decode([Review1].self, from: data)
+                //var array: [Review1] = []
+                //array = try decoder.decode([Review1].self, from: data)
+                //print(array)
+                //print(restaurantController.currentRestaurant?.reviews! as Any)
                 completion(nil)
             } catch {
                 print("Error decoding current restaurant: \(error)")

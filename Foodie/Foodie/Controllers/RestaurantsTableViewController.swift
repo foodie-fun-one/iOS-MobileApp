@@ -99,6 +99,7 @@ class RestaurantsTableViewController: UITableViewController {
               let indexPath = tableView.indexPathForSelectedRow else {return}
         
         let restaurant = restaurantController.restaurants[indexPath.row]
+        restaurantController.currentRestaurant = restaurant
         destination.currentRestaurant = restaurant
         
     }

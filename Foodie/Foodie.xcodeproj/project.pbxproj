@@ -22,6 +22,7 @@
 		F699D1E423EC981E00569FEE /* AddRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F699D1E323EC981E00569FEE /* AddRestaurantViewController.swift */; };
 		F699D1E623ECB72100569FEE /* ReviewRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F699D1E523ECB72100569FEE /* ReviewRestaurantViewController.swift */; };
 		F6BA639A23F6629100643F76 /* DetailedReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BA639923F6629100643F76 /* DetailedReviewViewController.swift */; };
+		F6BA639C23F710A600643F76 /* ReviewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BA639B23F710A600643F76 /* ReviewsTableViewController.swift */; };
 		F6D9948E23ECD18A00B16F33 /* RestaurantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D9948D23ECD18900B16F33 /* RestaurantController.swift */; };
 		F6DA6EA923E8932700C5150E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DA6EA823E8932700C5150E /* AppDelegate.swift */; };
 		F6DA6EAB23E8932700C5150E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DA6EAA23E8932700C5150E /* SceneDelegate.swift */; };
@@ -74,6 +75,7 @@
 		F699D1E323EC981E00569FEE /* AddRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRestaurantViewController.swift; sourceTree = "<group>"; };
 		F699D1E523ECB72100569FEE /* ReviewRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRestaurantViewController.swift; sourceTree = "<group>"; };
 		F6BA639923F6629100643F76 /* DetailedReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedReviewViewController.swift; sourceTree = "<group>"; };
+		F6BA639B23F710A600643F76 /* ReviewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewController.swift; sourceTree = "<group>"; };
 		F6D9948D23ECD18900B16F33 /* RestaurantController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantController.swift; sourceTree = "<group>"; };
 		F6DA6EA523E8932700C5150E /* Foodie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6DA6EA823E8932700C5150E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				F699D1E323EC981E00569FEE /* AddRestaurantViewController.swift */,
 				F64CCFAC23ECF73F0037971B /* RestaurantsTableViewController.swift */,
 				F699D1E523ECB72100569FEE /* ReviewRestaurantViewController.swift */,
+				F6BA639B23F710A600643F76 /* ReviewsTableViewController.swift */,
 				F6BA639923F6629100643F76 /* DetailedReviewViewController.swift */,
 			);
 			path = Controllers;
@@ -502,6 +505,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6BA639C23F710A600643F76 /* ReviewsTableViewController.swift in Sources */,
 				F6BA639A23F6629100643F76 /* DetailedReviewViewController.swift in Sources */,
 				F699D1E623ECB72100569FEE /* ReviewRestaurantViewController.swift in Sources */,
 				F699D1E023EC791900569FEE /* Restaurant.swift in Sources */,

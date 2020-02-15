@@ -17,7 +17,8 @@ class ReviewRestaurantViewController: UIViewController, UITableViewDelegate, UIT
     let restaurantController = RestaurantController()
     var currentRestaurant: Restaurant1?
     
-    @IBOutlet weak var reviewsTabelView: UITableView!
+    
+    @IBOutlet weak var seeAllReviewsButton: UIButton!
     @IBOutlet weak var priceRatingSC: UISegmentedControl!
     @IBOutlet weak var foodRatingSC: UISegmentedControl!
     @IBOutlet weak var serviceRatingSC: UISegmentedControl!
@@ -29,18 +30,18 @@ class ReviewRestaurantViewController: UIViewController, UITableViewDelegate, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        reviewsTabelView.delegate = self
+        guard let restaurantName = currentRestaurant?.name  else {return}
         nameLabel.text = currentRestaurant?.name
         cityLabel.text = currentRestaurant?.address
         hoursLabel.text = currentRestaurant?.hours
-        
+        seeAllReviewsButton.titleLabel?.text = "See All Reviews for \(restaurantName)"
         // Do any additional setup after loading the view.
         networkController.fetchCurrentRestaurantReviews(currentRestaurant: currentRestaurant!) { (error) in
             if let error = error {
                 NSLog("Could not get Details: \(error)")
             } else {
                 DispatchQueue.main.async {
-                    self.reviewsTabelView.reloadData()
+                    
                 }
             }
         }
@@ -50,9 +51,9 @@ class ReviewRestaurantViewController: UIViewController, UITableViewDelegate, UIT
         guard let reviewDisc = reviewTextView.text,
             let currentRestaurantID = currentRestaurant?.id else {return}
             
-        let priceRating = priceRatingSC.selectedSegmentIndex
-        let serviceRating = serviceRatingSC.selectedSegmentIndex
-        let foodRating = foodRatingSC.selectedSegmentIndex
+        let priceRating = priceRatingSC.selectedSegmentIndex + 1
+        let serviceRating = serviceRatingSC.selectedSegmentIndex + 1
+        let foodRating = foodRatingSC.selectedSegmentIndex + 1
         
 
         let newReview = Review1(id: nil, userId: 3, restaurantId: currentRestaurantID, reviewDisc: reviewDisc, priceRating: priceRating, serviceRating: serviceRating, foodRating: foodRating)
@@ -79,12 +80,10 @@ class ReviewRestaurantViewController: UIViewController, UITableViewDelegate, UIT
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destination = segue.destination as? DetailedReviewViewController else {return}
+        guard let destination = segue.destination as? UINavigationController else {return}
+        guard let targetDestination = destination.topViewController as? ReviewsTableViewController else {return}
         
-        destination.currentRestaurant = currentRestaurant
-        if let indexPath = reviewsTabelView.indexPathForSelectedRow {
-            destination.review = currentRestaurant?.reviews?[indexPath.row]
-        }
+        targetDestination.currentRestaurant = currentRestaurant
         
     }
     

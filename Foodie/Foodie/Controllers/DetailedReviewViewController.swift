@@ -14,9 +14,9 @@ class DetailedReviewViewController: UIViewController {
     var review: Review1?
     
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var priceRatingSC: UISegmentedControl!
-    @IBOutlet weak var foodRatingSC: UISegmentedControl!
-    @IBOutlet weak var serviceRatingSC: UISegmentedControl!
+    @IBOutlet weak var priceRatingLabel: UILabel!
+    @IBOutlet weak var foodRatingLabel: UILabel!
+    @IBOutlet weak var serviceRatingLabel: UILabel!
     @IBOutlet weak var reviewTextView: UITextView!
     
     
@@ -31,9 +31,9 @@ class DetailedReviewViewController: UIViewController {
             let name = currentRestaurant?.name else {return}
         
         self.nameLabel.text = "\(name) Review"
-        self.serviceRatingSC.selectedSegmentIndex = serviceRating
-        self.foodRatingSC.selectedSegmentIndex = foodRating
-        self.priceRatingSC.selectedSegmentIndex = priceRating
+        self.serviceRatingLabel.text = String(serviceRating)
+        self.foodRatingLabel.text = String(foodRating)
+        self.priceRatingLabel.text = String(priceRating)
         self.reviewTextView.text = review
         
     }

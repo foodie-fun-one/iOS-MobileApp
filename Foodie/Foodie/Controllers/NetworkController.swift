@@ -31,7 +31,7 @@ class NetworkController {
     private let baseURL = URL(string: "https://foodiefun-buildweek.herokuapp.com")!
     
     //var bearer: Bearer?
-    var bearer =  Bearer(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik5hdGU0IiwicGFzc3dvcmQiOiIkMmEkMTIkaGMxa29Ma0ZoYTZjN2xhYVNUazFMT2RmRUl5LjdHZk9ndjlNckVvckdZdml0ZnpoR0NQWFMiLCJpYXQiOjE1ODE2NTA3MDAsImV4cCI6MTU4MTY3OTUwMH0.xuPP6kXiv9N2XEyXSS8azRzE5FboJD_yp-8ArRXry4U")
+    var bearer =  Bearer(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik5hdGU0IiwicGFzc3dvcmQiOiIkMmEkMTIkaGMxa29Ma0ZoYTZjN2xhYVNUazFMT2RmRUl5LjdHZk9ndjlNckVvckdZdml0ZnpoR0NQWFMiLCJpYXQiOjE1ODE3ODc0NzIsImV4cCI6MTU4MTgxNjI3Mn0.brUPymeotfox_E_GKyOPIhqNTVf_QwsNq9CaCqbL2d8")
     
     var currentUserID: CurrentUserID?
     var currentUser: Foodie1?

@@ -22,7 +22,7 @@ class ReviewsTableViewController: UITableViewController {
                     NSLog("Could not get Details: \(error)")
                 } else {
                     DispatchQueue.main.async {
-                        
+                        self.tableView.reloadData()
                     }
                 }
             }

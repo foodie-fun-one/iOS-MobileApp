@@ -60,7 +60,7 @@ class ReviewRestaurantViewController: UIViewController, UITableViewDelegate, UIT
 
         networkController.updateRestaurantReview(review: newReview) { (error) in
             if let error = error {
-                NSLog("Error creating Restaurant \(error)")
+                NSLog("Error creating Review \(error)")
             } else {
                 DispatchQueue.main.async {
                     self.priceRatingSC.selectedSegmentIndex = 0

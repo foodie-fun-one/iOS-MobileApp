@@ -204,13 +204,14 @@ class NetworkController {
     
     func updateRestaurantReview(review: Review1, completion: @escaping (NetworkError?) -> Void) {
         
-        let restaurantID = review.restaurantId
+        guard let restaurantID = review.restaurantId else {return}
         let url = baseURL.appendingPathComponent("api/reviews/restaurant/\(restaurantID)")
         //guard let bearer = bearer else {return}
+        print(url)
 
         var request = URLRequest(url: url)
 
-        request.httpMethod = HTTPMethod.put.rawValue
+        request.httpMethod = HTTPMethod.post.rawValue
         request.addValue("\(bearer.token)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 

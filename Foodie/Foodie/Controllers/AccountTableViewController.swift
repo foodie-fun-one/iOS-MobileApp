@@ -1,42 +1,31 @@
 //
-//  RestaurantsTableViewController.swift
+//  AccountTableViewController.swift
 //  Foodie
 //
-//  Created by Nathan Hedgeman on 2/6/20.
+//  Created by Nathan Hedgeman on 2/15/20.
 //  Copyright © 2020 Nathan Hedgeman. All rights reserved.
 //
 
 import UIKit
 
-class RestaurantsTableViewController: UITableViewController {
-    
-    //Properties
-    //var restaurantController = RestaurantController()
-    var networkController = NetworkController()
+class AccountTableViewController: UITableViewController {
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-            print("it loaded")
-            networkController.fetchAllRestaurants { (error) in
-                print("it ran")
-                if let error = error {
-                    NSLog("Error fetching restaurants \(error)")
-                } else {
-                    DispatchQueue.main.async {
-                        print("it finished")
-                        self.tableView.reloadData()
-                    }
+    let networkController = NetworkController()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        networkController.fetchUserReviews { (error) in
+            if let error = error {
+                NSLog("Error getting reviews: \(error)")
+            } else {
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
                 }
             }
-            
-        
-    }
-    @IBAction func reloadButton(_ sender: Any) {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
         }
     }
-    
+
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -46,14 +35,15 @@ class RestaurantsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return restaurantController.restaurants.count
+        return userController.profileUser?.reviews?.count ?? 1
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell", for: indexPath)
-        let restaurant = restaurantController.restaurants[indexPath.row]
-        cell.textLabel?.text = restaurant.name
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewCell", for: indexPath)
+        guard let review = userController.profileUser?.reviews?[indexPath.row] else {return cell}
+        cell.textLabel?.text = "\(review.id ?? 0)"
+        
         return cell
     }
     
@@ -93,20 +83,14 @@ class RestaurantsTableViewController: UITableViewController {
     }
     */
 
-    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        guard let destination = segue.destination as? ReviewRestaurantViewController,
-              let indexPath = tableView.indexPathForSelectedRow else {return}
-        
-        let restaurant = restaurantController.restaurants[indexPath.row]
-        restaurantController.currentRestaurant = restaurant
-        destination.currentRestaurant = restaurant
-        
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
     }
-    
+    */
 
 }

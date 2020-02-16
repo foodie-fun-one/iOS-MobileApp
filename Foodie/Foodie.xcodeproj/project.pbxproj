@@ -23,6 +23,8 @@
 		F699D1E623ECB72100569FEE /* ReviewRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F699D1E523ECB72100569FEE /* ReviewRestaurantViewController.swift */; };
 		F6BA639A23F6629100643F76 /* DetailedReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BA639923F6629100643F76 /* DetailedReviewViewController.swift */; };
 		F6BA639C23F710A600643F76 /* ReviewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BA639B23F710A600643F76 /* ReviewsTableViewController.swift */; };
+		F6BA63A223F891B700643F76 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BA63A123F891B700643F76 /* UserController.swift */; };
+		F6BA63A423F8956800643F76 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BA63A323F8956800643F76 /* AccountTableViewController.swift */; };
 		F6D9948E23ECD18A00B16F33 /* RestaurantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D9948D23ECD18900B16F33 /* RestaurantController.swift */; };
 		F6DA6EA923E8932700C5150E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DA6EA823E8932700C5150E /* AppDelegate.swift */; };
 		F6DA6EAB23E8932700C5150E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DA6EAA23E8932700C5150E /* SceneDelegate.swift */; };
@@ -76,6 +78,8 @@
 		F699D1E523ECB72100569FEE /* ReviewRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRestaurantViewController.swift; sourceTree = "<group>"; };
 		F6BA639923F6629100643F76 /* DetailedReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedReviewViewController.swift; sourceTree = "<group>"; };
 		F6BA639B23F710A600643F76 /* ReviewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewController.swift; sourceTree = "<group>"; };
+		F6BA63A123F891B700643F76 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		F6BA63A323F8956800643F76 /* AccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
 		F6D9948D23ECD18900B16F33 /* RestaurantController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantController.swift; sourceTree = "<group>"; };
 		F6DA6EA523E8932700C5150E /* Foodie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6DA6EA823E8932700C5150E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -241,6 +245,7 @@
 		F6DA6EDE23E8B8F000C5150E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F6BA63A123F891B700643F76 /* UserController.swift */,
 				F699D1DD23EC75CE00569FEE /* NetworkController.swift */,
 				F6D9948D23ECD18900B16F33 /* RestaurantController.swift */,
 				F699D1E123EC815400569FEE /* LoginViewController.swift */,
@@ -249,6 +254,7 @@
 				F699D1E523ECB72100569FEE /* ReviewRestaurantViewController.swift */,
 				F6BA639B23F710A600643F76 /* ReviewsTableViewController.swift */,
 				F6BA639923F6629100643F76 /* DetailedReviewViewController.swift */,
+				F6BA63A323F8956800643F76 /* AccountTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -507,6 +513,8 @@
 			files = (
 				F6BA639C23F710A600643F76 /* ReviewsTableViewController.swift in Sources */,
 				F6BA639A23F6629100643F76 /* DetailedReviewViewController.swift in Sources */,
+				F6BA63A423F8956800643F76 /* AccountTableViewController.swift in Sources */,
+				F6BA63A223F891B700643F76 /* UserController.swift in Sources */,
 				F699D1E623ECB72100569FEE /* ReviewRestaurantViewController.swift in Sources */,
 				F699D1E023EC791900569FEE /* Restaurant.swift in Sources */,
 				F699D1DC23EC753D00569FEE /* Bearer.swift in Sources */,

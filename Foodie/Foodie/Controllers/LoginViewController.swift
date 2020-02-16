@@ -46,6 +46,7 @@ class LoginViewController: UIViewController {
         guard let city = cityTextField.text else {return}
         
         let newUser = Foodie1(username: username, password: password, email: email, city: city)
+        userController.profileUser = newUser
         
         networkController.signIn(with: newUser) { (error) in
             if let error = error {

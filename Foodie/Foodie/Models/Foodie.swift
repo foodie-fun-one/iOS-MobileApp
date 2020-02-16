@@ -25,6 +25,7 @@ class Foodie1: Codable {
     }
 }
 
-class CurrentUserID: Codable {
-    let userID: Int
+class CurrentUser: Codable {
+    let userID: Int?
+    let token: String?
 }

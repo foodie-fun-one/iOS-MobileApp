@@ -9,3 +9,5 @@
 import Foundation
 
 let restaurantController = RestaurantController()
+
+let userController = UserController()

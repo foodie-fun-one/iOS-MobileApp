@@ -30,11 +30,8 @@ class NetworkController {
     let fireBase = Firestore.firestore()
     private let baseURL = URL(string: "https://foodiefun-buildweek.herokuapp.com")!
     
-    //var bearer: Bearer?
-    var bearer =  Bearer(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik5hdGU0IiwicGFzc3dvcmQiOiIkMmEkMTIkaGMxa29Ma0ZoYTZjN2xhYVNUazFMT2RmRUl5LjdHZk9ndjlNckVvckdZdml0ZnpoR0NQWFMiLCJpYXQiOjE1ODE3ODc0NzIsImV4cCI6MTU4MTgxNjI3Mn0.brUPymeotfox_E_GKyOPIhqNTVf_QwsNq9CaCqbL2d8")
-    
-    var currentUserID: CurrentUserID?
-    var currentUser: Foodie1?
+    var bearer = userController.currentUser?.token
+    //var bearer =  Bearer(token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik5hdGU0IiwicGFzc3dvcmQiOiIkMmEkMTIkaGMxa29Ma0ZoYTZjN2xhYVNUazFMT2RmRUl5LjdHZk9ndjlNckVvckdZdml0ZnpoR0NQWFMiLCJpYXQiOjE1ODE4MjIzNjQsImV4cCI6MTU4MTg1MTE2NH0.HdtJVyCo3O4yKi5535-HRrxcXhPzFiC9dZyd8voCc5c")
     
     
     //Network Calls
@@ -110,7 +107,8 @@ class NetworkController {
             
             let decoder = JSONDecoder()
             do {
-                self.bearer = try decoder.decode(Bearer.self, from: data)
+                userController.currentUser = try decoder.decode(CurrentUser.self, from: data)
+                
             } catch {
                 print("Error decoding bearer object: \(error)")
                 completion(error)
@@ -124,15 +122,15 @@ class NetworkController {
     func addRestaurant(restaurant: Restaurant1, completion: @escaping (NetworkError?) -> Void) {
         
         
-        //guard let bearer = bearer else {return}
+        guard let bearer = userController.currentUser?.token else {return}
         let url = baseURL.appendingPathComponent("api/restaurants")
 
         var request = URLRequest(url: url)
         
 
         request.httpMethod = HTTPMethod.post.rawValue
-        request.addValue("\(bearer.token)", forHTTPHeaderField: "Authorization")
-        print("\(bearer.token)")
+        request.addValue("\(bearer)", forHTTPHeaderField: "Authorization")
+        print("\(bearer)")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         let encoder = JSONEncoder()
@@ -163,12 +161,13 @@ class NetworkController {
     }
     
     func fetchAllRestaurants(completion: @escaping (NetworkError?) -> Void) {
-        //guard let bearer = bearer else {return}
+        
+        guard let bearer = userController.currentUser?.token else {return}
         let allRestaurantsURL = baseURL.appendingPathComponent("api/restaurants")
 
         var request = URLRequest(url: allRestaurantsURL)
         request.httpMethod = HTTPMethod.get.rawValue
-        request.addValue("\(bearer.token)", forHTTPHeaderField: "Authorization")
+        request.addValue("\(bearer)", forHTTPHeaderField: "Authorization")
 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let response = response as? HTTPURLResponse,
@@ -206,13 +205,13 @@ class NetworkController {
         
         guard let restaurantID = review.restaurantId else {return}
         let url = baseURL.appendingPathComponent("api/reviews/restaurant/\(restaurantID)")
-        //guard let bearer = bearer else {return}
+        guard let bearer = userController.currentUser?.token else {return}
         print(url)
 
         var request = URLRequest(url: url)
 
         request.httpMethod = HTTPMethod.post.rawValue
-        request.addValue("\(bearer.token)", forHTTPHeaderField: "Authorization")
+        request.addValue("\(bearer)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         let encoder = JSONEncoder()
@@ -245,14 +244,14 @@ class NetworkController {
     
     func fetchCurrentRestaurant(currentRestaurant: Restaurant1, completion: @escaping (NetworkError?) -> Void) {
         
-        //guard let bearer = bearer else {return}
+        guard let bearer = userController.currentUser?.token else {return}
         guard let id = currentRestaurant.id else {return print("No id")}
 
         let restaurantURL = baseURL.appendingPathComponent("api/restaurants/\(id)")
 
         var request = URLRequest(url: restaurantURL)
         request.httpMethod = HTTPMethod.get.rawValue
-        request.addValue("\(bearer.token)", forHTTPHeaderField: "Authorization")
+        request.addValue("\(bearer)", forHTTPHeaderField: "Authorization")
 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let response = response as? HTTPURLResponse,
@@ -289,15 +288,14 @@ class NetworkController {
     
     func fetchCurrentRestaurantReviews(currentRestaurant: Restaurant1, completion: @escaping (NetworkError?) -> Void) {
         
-        //guard let bearer = bearer else {return}
+        guard let bearer = userController.currentUser?.token else {return}
         guard let id = currentRestaurant.id else {return print("No id")}
 
         let restaurantURL = baseURL.appendingPathComponent("api/reviews/restaurant/\(id)")
-        print(restaurantURL.absoluteString)
 
         var request = URLRequest(url: restaurantURL)
         request.httpMethod = HTTPMethod.get.rawValue
-        request.addValue("\(bearer.token)", forHTTPHeaderField: "Authorization")
+        request.addValue("\(bearer)", forHTTPHeaderField: "Authorization")
 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let response = response as? HTTPURLResponse,
@@ -331,6 +329,48 @@ class NetworkController {
                 completion(nil)
             } catch {
                 print("Error decoding current restaurant: \(error)")
+                completion(.noDecode)
+                return
+            }
+            }.resume()
+    }
+    
+    func fetchUserReviews(completion: @escaping (NetworkError?) -> Void) {
+        guard let bearer = userController.currentUser?.token else {return}
+        guard let userID = userController.currentUser?.userID else {return}
+        let allRestaurantsURL = baseURL.appendingPathComponent("api/reviews/user/\(userID)")
+
+        var request = URLRequest(url: allRestaurantsURL)
+        request.httpMethod = HTTPMethod.get.rawValue
+        request.addValue("\(bearer)", forHTTPHeaderField: "Authorization")
+
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let response = response as? HTTPURLResponse,
+                response.statusCode != 200 {
+                print(response.statusCode)
+                completion(.badAuth)
+                return
+            }
+
+            if let _ = error {
+                completion(.otherError)
+                return
+            }
+
+            guard let data = data else {
+                completion(.badData)
+                return
+            }
+            
+            print(data)
+
+            let decoder = JSONDecoder()
+            do {
+                userController.reviews = try decoder.decode([Review1].self, from: data)
+                
+                completion(nil)
+            } catch {
+                print("Error decoding reviews: \(error)")
                 completion(.noDecode)
                 return
             }

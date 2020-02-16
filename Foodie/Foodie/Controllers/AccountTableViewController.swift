@@ -12,6 +12,7 @@ class AccountTableViewController: UITableViewController {
 
     let networkController = NetworkController()
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,7 +26,9 @@ class AccountTableViewController: UITableViewController {
             }
         }
     }
-
+    
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

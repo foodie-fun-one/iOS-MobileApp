@@ -336,9 +336,10 @@ class NetworkController {
     }
     
     func fetchUserReviews(completion: @escaping (NetworkError?) -> Void) {
+        print("fetch review running")
         guard let bearer = userController.currentUser?.token else {return}
         guard let userID = userController.currentUser?.userID else {return}
-        let allRestaurantsURL = baseURL.appendingPathComponent("api/reviews/user/\(userID)")
+        let allRestaurantsURL = baseURL.appendingPathComponent("api/reviews/combo/\(userID)")
 
         var request = URLRequest(url: allRestaurantsURL)
         request.httpMethod = HTTPMethod.get.rawValue
@@ -366,7 +367,7 @@ class NetworkController {
 
             let decoder = JSONDecoder()
             do {
-                userController.reviews = try decoder.decode([Review1].self, from: data)
+                userController.profileUser?.reviews = try decoder.decode([Review1].self, from: data)
                 
                 completion(nil)
             } catch {

@@ -56,7 +56,7 @@ class ReviewRestaurantViewController: UIViewController, UITableViewDelegate, UIT
         let foodRating = foodRatingSC.selectedSegmentIndex + 1
         
 
-        let newReview = Review1(id: nil, userId: 3, restaurantId: currentRestaurantID, reviewDisc: reviewDisc, priceRating: priceRating, serviceRating: serviceRating, foodRating: foodRating)
+        let newReview = Review1(id: nil, userId: userController.currentUser?.userID, restaurantId: currentRestaurantID, reviewDisc: reviewDisc, priceRating: priceRating, serviceRating: serviceRating, foodRating: foodRating)
 
         networkController.updateRestaurantReview(review: newReview) { (error) in
             if let error = error {

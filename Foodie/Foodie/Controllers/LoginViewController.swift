@@ -20,7 +20,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.isModalInPresentation = true
+        
     }
     
     @IBAction func signUPButton(_ sender: Any) {
@@ -33,8 +34,16 @@ class LoginViewController: UIViewController {
         
         networkController.signUp(with: newUser) { (error) in
             if let error = error {
+                
                 NSLog("Error during signup: \(error)")
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Error During Signup.", message: "Try Again", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                }
+                                
             } else {
+                
                 DispatchQueue.main.async {
                     self.emailTextField.text = ""
                     self.cityTextField.text = ""
@@ -60,7 +69,14 @@ class LoginViewController: UIViewController {
         
         networkController.signIn(with: newUser) { (error) in
             if let error = error {
+                
                 NSLog("Error loging in \(error)")
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Error Loging In", message: "Try Again", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                }
+                
             } else {
                 DispatchQueue.main.async {
                     self.dismiss(animated: true, completion: nil)

@@ -39,10 +39,14 @@ class AddRestaurantViewController: UIViewController {
                 NSLog("Error adding Restaurant: \(error)")
             } else {
                 DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Restaurant was added", message: "Review this restaurant in the restaurant tab.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                    
                     self.nameTextField.text = ""
                     self.cityTextField.text = ""
                     self.hoursTextField.text = ""
-                    //self.performSegue(withIdentifier: "ToRestaurantTableViewSegue", sender: Any?.self)
+                    
                 }
             }
         }

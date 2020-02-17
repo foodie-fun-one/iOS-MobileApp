@@ -16,7 +16,6 @@ class RestaurantsTableViewController: UITableViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-            print("it loaded")
             networkController.fetchAllRestaurants { (error) in
                 print("it ran")
                 if let error = error {

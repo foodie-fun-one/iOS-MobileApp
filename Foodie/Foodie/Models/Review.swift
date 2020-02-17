@@ -12,6 +12,7 @@ struct Review1: Codable {
     
     var id: Int?
     var userId: Int?
+    var name: String?
     var restaurantId: Int?
     var reviewDisc: String?
     var priceRating: Int?

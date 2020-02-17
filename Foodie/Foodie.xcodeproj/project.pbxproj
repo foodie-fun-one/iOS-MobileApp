@@ -36,6 +36,7 @@
 		F6DA6EC323E8932700C5150E /* FoodieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DA6EC223E8932700C5150E /* FoodieTests.swift */; };
 		F6DA6ECE23E8932700C5150E /* FoodieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DA6ECD23E8932700C5150E /* FoodieUITests.swift */; };
 		F6DA6EE223E8BEB900C5150E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DA6EE123E8BEB900C5150E /* CoreDataStack.swift */; };
+		F6F2744523FA3DDC00A38025 /* ProfileReviewDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F2744423FA3DDC00A38025 /* ProfileReviewDetailedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		F6DA6ECD23E8932700C5150E /* FoodieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodieUITests.swift; sourceTree = "<group>"; };
 		F6DA6ECF23E8932700C5150E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F6DA6EE123E8BEB900C5150E /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		F6F2744423FA3DDC00A38025 /* ProfileReviewDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileReviewDetailedViewController.swift; path = "/Volumes/Xcode Projects/Build Week/iOS-MobileApp (focus)/Foodie/Foodie/Controllers/ProfileReviewDetailedViewController.swift"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +257,7 @@
 				F6BA639B23F710A600643F76 /* ReviewsTableViewController.swift */,
 				F6BA639923F6629100643F76 /* DetailedReviewViewController.swift */,
 				F6BA63A323F8956800643F76 /* AccountTableViewController.swift */,
+				F6F2744423FA3DDC00A38025 /* ProfileReviewDetailedViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				F6BA639A23F6629100643F76 /* DetailedReviewViewController.swift in Sources */,
 				F6BA63A423F8956800643F76 /* AccountTableViewController.swift in Sources */,
 				F6BA63A223F891B700643F76 /* UserController.swift in Sources */,
+				F6F2744523FA3DDC00A38025 /* ProfileReviewDetailedViewController.swift in Sources */,
 				F699D1E623ECB72100569FEE /* ReviewRestaurantViewController.swift in Sources */,
 				F699D1E023EC791900569FEE /* Restaurant.swift in Sources */,
 				F699D1DC23EC753D00569FEE /* Bearer.swift in Sources */,

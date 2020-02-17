@@ -34,6 +34,16 @@ class LoginViewController: UIViewController {
         networkController.signUp(with: newUser) { (error) in
             if let error = error {
                 NSLog("Error during signup: \(error)")
+            } else {
+                DispatchQueue.main.async {
+                    self.emailTextField.text = ""
+                    self.cityTextField.text = ""
+                    
+                    let alert = UIAlertController(title: "Sign Up was successful.", message: "Continue to sign in.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                    
+                }
             }
         }
         

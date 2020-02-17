@@ -44,9 +44,15 @@ class ReviewsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewCell", for: indexPath)
+        guard let review = currentRestaurant?.reviews?[indexPath.row] else {return cell}
+        guard let rate1 = review.foodRating,
+            let rate2 = review.priceRating,
+            let rate3 = review.serviceRating else {return cell}
         
+        
+        let averageRating = (rate1 + rate2 + rate3)/3
         cell.textLabel?.text = currentRestaurant?.name
-        cell.detailTextLabel?.text = "Working on it"
+        cell.detailTextLabel?.text = String("Overall Rating:\(averageRating)")
 
         return cell
     }

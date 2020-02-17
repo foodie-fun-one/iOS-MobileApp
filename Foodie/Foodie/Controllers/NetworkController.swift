@@ -48,6 +48,7 @@ class NetworkController {
         do {
             let jsonData = try jsonEncoder.encode(user)
             request.httpBody = jsonData
+            print(request.httpBody!)
         } catch {
             print("Error encoding user object: \(error)")
             completion(error)
@@ -336,7 +337,7 @@ class NetworkController {
     }
     
     func fetchUserReviews(completion: @escaping (NetworkError?) -> Void) {
-        print("fetch review running")
+        
         guard let bearer = userController.currentUser?.token else {return}
         guard let userID = userController.currentUser?.userID else {return}
         let allRestaurantsURL = baseURL.appendingPathComponent("api/reviews/combo/\(userID)")
@@ -344,6 +345,7 @@ class NetworkController {
         var request = URLRequest(url: allRestaurantsURL)
         request.httpMethod = HTTPMethod.get.rawValue
         request.addValue("\(bearer)", forHTTPHeaderField: "Authorization")
+        
 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let response = response as? HTTPURLResponse,
@@ -366,6 +368,7 @@ class NetworkController {
             print(data)
 
             let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
             do {
                 userController.profileUser?.reviews = try decoder.decode([Review1].self, from: data)
                 
@@ -376,5 +379,77 @@ class NetworkController {
                 return
             }
             }.resume()
+    }
+    
+    func fetchUser(completion: @escaping (NetworkError?) -> Void) {
+        
+        guard let bearer = userController.currentUser?.token else {return}
+        guard let userID = userController.currentUser?.userID else {return}
+        let allRestaurantsURL = baseURL.appendingPathComponent("api/users/\(userID)")
+
+        var request = URLRequest(url: allRestaurantsURL)
+        request.httpMethod = HTTPMethod.get.rawValue
+        request.addValue("\(bearer)", forHTTPHeaderField: "Authorization")
+        
+
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let response = response as? HTTPURLResponse,
+                response.statusCode != 200 {
+                print(response.statusCode)
+                completion(.badAuth)
+                return
+            }
+
+            if let _ = error {
+                completion(.otherError)
+                return
+            }
+
+            guard let data = data else {
+                completion(.badData)
+                return
+            }
+            
+            print(data)
+
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            do {
+                userController.profileUser = try decoder.decode(Foodie1.self, from: data)
+                
+                completion(nil)
+            } catch {
+                print("Error decoding reviews: \(error)")
+                completion(.noDecode)
+                return
+            }
+            }.resume()
+    }
+    
+    func deleteReview(review: Review1, completion: @escaping (NetworkError?) -> Void ) {
+        guard let bearer = userController.currentUser?.token else {return}
+        guard let reviewID = review.id else {return}
+            let allRestaurantsURL = baseURL.appendingPathComponent("api/reviews/\(reviewID)")
+        print(allRestaurantsURL)
+
+            var request = URLRequest(url: allRestaurantsURL)
+            request.httpMethod = HTTPMethod.delete.rawValue
+            request.addValue("\(bearer)", forHTTPHeaderField: "Authorization")
+            
+
+            URLSession.shared.dataTask(with: request) { (data, response, error) in
+                if let response = response as? HTTPURLResponse,
+                    response.statusCode != 200 {
+                    print(response.statusCode)
+                    completion(.badAuth)
+                    return
+                }
+
+                if let _ = error {
+                    completion(.otherError)
+                    return
+                }
+                }.resume()
+        
     }
 }

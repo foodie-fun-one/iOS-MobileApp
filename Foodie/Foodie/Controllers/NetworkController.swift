@@ -48,7 +48,7 @@ class NetworkController {
         do {
             let jsonData = try jsonEncoder.encode(user)
             request.httpBody = jsonData
-            print(request.httpBody!)
+            //print(request.httpBody!)
         } catch {
             print("Error encoding user object: \(error)")
             completion(error)
@@ -131,7 +131,6 @@ class NetworkController {
 
         request.httpMethod = HTTPMethod.post.rawValue
         request.addValue("\(bearer)", forHTTPHeaderField: "Authorization")
-        print("\(bearer)")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         let encoder = JSONEncoder()
@@ -146,7 +145,6 @@ class NetworkController {
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let response = response as? HTTPURLResponse,
                 response.statusCode != 201 {
-                print(response.statusCode)
                 completion(.badAuth)
                 return
             }
@@ -186,8 +184,6 @@ class NetworkController {
                 completion(.badData)
                 return
             }
-            
-            print(data)
 
             let decoder = JSONDecoder()
             do {
@@ -207,7 +203,6 @@ class NetworkController {
         guard let restaurantID = review.restaurantId else {return}
         let url = baseURL.appendingPathComponent("api/reviews/restaurant/\(restaurantID)")
         guard let bearer = userController.currentUser?.token else {return}
-        print(url)
 
         var request = URLRequest(url: url)
 
@@ -228,7 +223,6 @@ class NetworkController {
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let response = response as? HTTPURLResponse,
                 response.statusCode != 201 {
-                print(response.statusCode)
                 completion(.otherError)
                 return
             }
@@ -270,8 +264,6 @@ class NetworkController {
                 completion(.badData)
                 return
             }
-            
-            print(data)
 
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -301,7 +293,6 @@ class NetworkController {
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let response = response as? HTTPURLResponse,
                 response.statusCode != 200 {
-                print(response.statusCode)
                 completion(.otherError)
                 return
             }
@@ -315,18 +306,12 @@ class NetworkController {
                 completion(.badData)
                 return
             }
-            
-            print(data)
 
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             
             do {
                 restaurantController.currentRestaurant?.reviews = try decoder.decode([Review1].self, from: data)
-                //var array: [Review1] = []
-                //array = try decoder.decode([Review1].self, from: data)
-                //print(array)
-                //print(restaurantController.currentRestaurant?.reviews! as Any)
                 completion(nil)
             } catch {
                 print("Error decoding current restaurant: \(error)")
@@ -350,7 +335,6 @@ class NetworkController {
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let response = response as? HTTPURLResponse,
                 response.statusCode != 200 {
-                print(response.statusCode)
                 completion(.badAuth)
                 return
             }
@@ -364,8 +348,6 @@ class NetworkController {
                 completion(.badData)
                 return
             }
-            
-            print(data)
 
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -395,7 +377,6 @@ class NetworkController {
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let response = response as? HTTPURLResponse,
                 response.statusCode != 200 {
-                print(response.statusCode)
                 completion(.badAuth)
                 return
             }
@@ -409,8 +390,6 @@ class NetworkController {
                 completion(.badData)
                 return
             }
-            
-            print(data)
 
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -430,7 +409,6 @@ class NetworkController {
         guard let bearer = userController.currentUser?.token else {return}
         guard let reviewID = review.id else {return}
             let allRestaurantsURL = baseURL.appendingPathComponent("api/reviews/\(reviewID)")
-        print(allRestaurantsURL)
 
             var request = URLRequest(url: allRestaurantsURL)
             request.httpMethod = HTTPMethod.delete.rawValue
@@ -440,7 +418,6 @@ class NetworkController {
             URLSession.shared.dataTask(with: request) { (data, response, error) in
                 if let response = response as? HTTPURLResponse,
                     response.statusCode != 200 {
-                    print(response.statusCode)
                     completion(.badAuth)
                     return
                 }

@@ -17,12 +17,10 @@ class RestaurantsTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
             networkController.fetchAllRestaurants { (error) in
-                print("it ran")
                 if let error = error {
                     NSLog("Error fetching restaurants \(error)")
                 } else {
                     DispatchQueue.main.async {
-                        print("it finished")
                         self.tableView.reloadData()
                     }
                 }

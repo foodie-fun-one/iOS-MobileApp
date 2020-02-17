@@ -63,10 +63,16 @@ class ReviewRestaurantViewController: UIViewController, UITableViewDelegate, UIT
                 NSLog("Error creating Review \(error)")
             } else {
                 DispatchQueue.main.async {
-                    self.priceRatingSC.selectedSegmentIndex = 0
-                    self.foodRatingSC.selectedSegmentIndex = 0
-                    self.serviceRatingSC.selectedSegmentIndex = 0
-                    self.reviewTextView.text = ""
+                    
+                    let alert = UIAlertController(title: "Review Created", message: "", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (alert) in
+                        
+                        self.priceRatingSC.selectedSegmentIndex = 0
+                        self.foodRatingSC.selectedSegmentIndex = 0
+                        self.serviceRatingSC.selectedSegmentIndex = 0
+                        self.reviewTextView.text = ""
+                    }))
+                    self.present(alert, animated: true)
                 }
             }
         }
